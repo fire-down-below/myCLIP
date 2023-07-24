@@ -370,6 +370,7 @@ class CLIP(nn.Module):
         #print(logit_scale.shape)
         #print("logit scale: ", logit_scale)
         #为什么cos similarity实现是用点击，而且乘了一个很奇怪的数字
+        #破案了，初始化参数不重要，因为logit_scale是可学习的参数
         logits_per_image = logit_scale * image_features @ text_features.t()
 
         logits_per_text = logits_per_image.t()
